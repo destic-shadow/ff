@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=https://www.youtube.com/watch?v=your_video_id" />
-    
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <p>I love you, 
-       <a href="https://youtu.be/pUxoI-C0X84?si=26iQM1GSVaieVLB6">click here</a>.
-    </p>
-
+<head>
+    <title>I love you</title>
     <script>
-      window.location.href = "https://youtu.be/pUxoI-C0X84?si=26iQM1GSVaieVLB6";
+        (function() {
+            // 1. CHANGE THIS TO YOUR VIDEO ID
+            var videoId = "GwdD2DhV73g"; 
+            
+            // 2. Define our targets
+            var appShortsUrl = "youtube://shorts/" + videoId;
+            var appWatchUrl = "youtube://www.youtube.com/watch?v=" + videoId;
+            var webUrl = "https://www.youtube.com/shorts/" + videoId;
+
+            // Step 1: Try the specific Shorts app path
+            window.location.href = appShortsUrl;
+
+            // Step 2: If that fails, try the general watch path (after 200ms)
+            setTimeout(function() {
+                window.location.href = appWatchUrl;
+            }, 200);
+
+            // Step 3: Final fallback to the web browser (after 500ms)
+            setTimeout(function() {
+                window.location.href = webUrl;
+            }, 500);
+        })();
     </script>
-  </body>
+    <meta http-equiv="refresh" content="2; url=https://www.youtube.com/shorts/YOUR_VIDEO_ID_HERE">
+</head>
+<body>
+    <div style="text-align: center; font-family: sans-serif; margin-top: 50px;">
+        <p>Redirecting to YouTube Shorts...</p>
+        <p><a href="https://www.youtube.com/shorts/YOUR_VIDEO_ID_HERE">Click here</a> if it doesn't open automatically.</p>
+    </div>
+</body>
 </html>
